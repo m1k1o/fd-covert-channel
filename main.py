@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os, sys, time
 
 def send(text, fd_offset=15, bandwidth=32, pause_sec=1.5):
@@ -170,7 +170,7 @@ def receive_args(args):
 # send the top-level parser
 parser = argparse.ArgumentParser(
 	prog='fd-covert-channel',
-	description='Send text files using covert channel in file descriptors of proccess'
+	description='Send text files using covert channel in file descriptors of process'
 )
 parser.add_argument('-f', '--fd-offset', type=int, help='file descriptor offset', required=False, default=15)
 parser.add_argument('-b', '--bandwidth', type=int, help='bandwidth', required=False, default=32)
