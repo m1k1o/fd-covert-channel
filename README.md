@@ -1,5 +1,13 @@
+**DISCLAIMER**: THIS SOFTWARE IS HIGHLY EXPERIMENTAL, ONLY DEMOSTRATIONAL PROOF OF CONCEPT AND SHOULD NOT BE USED TO SEND ANY DATA RELIABLY.
+
 # fd-covert-channel
 Transmit text files using covert channel in file descriptors of process.
+
+Every process can open a file. Those file descriptors can everyone in the system see. This covert channel consists of permutating file descriptors of process, where `1` means file is opened and `0` file is closed. Receiver can read this time changing sequence and recover file.
+
+- **FD_OFFSET** - file descriptor offset is offet in created file descriptors.
+- **BANDWIDTH** - desired bandwidth for sent data. Control channel is outside of selected bandwidth. It can tell receiver whether any change in transmission occured.
+- **PAUSE** - after one broadcast, how long will program wait until another broadcast.
 
 ```
 $ ./main.py -h
@@ -22,6 +30,8 @@ optional arguments:
   -p PAUSE, --pause PAUSE
                         pause between broadcasts in seconds
 ```
+
+**Please note** that this program can only send text files. It will read whole text file into memory, so please take that into consideration.
 
 ## Demo
 
@@ -81,3 +91,7 @@ Received.
 $ cat out.txt
 Test 123
 ```
+
+## Requirements
+- python 3
+- unix operating system
